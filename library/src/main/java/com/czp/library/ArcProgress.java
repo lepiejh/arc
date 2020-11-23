@@ -104,6 +104,7 @@ public class ArcProgress extends ProgressBar {
         canvas.save();
         float x = mArcRectf.right / 2 + mBoardWidth / 2f;
         float y = mArcRectf.right / 2 + mBoardWidth / 2f;
+        mArcPaint.setColor(mArcbgColor);
         RectF rectBlackBg = new RectF(mBoardWidth / 2f, mBoardWidth / 2f,
                 getMeasuredWidth() - mBoardWidth / 2f, getMeasuredHeight() - mBoardWidth / 2f);
         canvas.drawArc(rectBlackBg, 0, 360, false, mArcPaint);
