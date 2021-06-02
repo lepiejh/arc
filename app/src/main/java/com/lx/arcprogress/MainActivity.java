@@ -1,10 +1,8 @@
 package com.lx.arcprogress;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-import com.czp.library.ArcProgress;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -12,9 +10,5 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        ArcProgress arcProgress = findViewById(R.id.myProgress);
-        arcProgress.setRoate(1/438f);
-        arcProgress.invalidate();
     }
 }

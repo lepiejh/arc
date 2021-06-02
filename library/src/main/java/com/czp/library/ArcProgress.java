@@ -5,9 +5,12 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.RectF;
+import android.graphics.Shader;
+import android.graphics.SweepGradient;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -46,6 +49,7 @@ public class ArcProgress extends ProgressBar {
     private Canvas mCenterCanvas;
     private OnCenterDraw mOnCenter;
     private float roate;
+    private boolean capRount;
 
     public void setRoate(float roate) {
         this.roate = roate;
@@ -72,16 +76,21 @@ public class ArcProgress extends ProgressBar {
         mBgShow = attributes.getBoolean(R.styleable.ArcProgress_bgShow,false);
         mDegree = attributes.getInt(R.styleable.ArcProgress_degree,DEFAULT_OFFSETDEGREE);
         mStylePogress = attributes.getInt(R.styleable.ArcProgress_progressStyle,STYLE_TICK);
-        boolean capRount = attributes.getBoolean(R.styleable.ArcProgress_arcCapRound,false);
+        capRount = attributes.getBoolean(R.styleable.ArcProgress_arcCapRound,false);
+        setArcPaint(capRount);
+        mLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mLinePaint.setStrokeWidth(mTickWidth);
+    }
+
+    private void setArcPaint(boolean capRount) {
         mArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mArcPaint.setColor(mArcbgColor);
         if(capRount)
             mArcPaint.setStrokeCap(Paint.Cap.ROUND);
         mArcPaint.setStrokeWidth(mBoardWidth);
         mArcPaint.setStyle(Paint.Style.STROKE);
-        mLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        mLinePaint.setStrokeWidth(mTickWidth);
     }
+
     public void setOnCenterDraw(OnCenterDraw mOnCenter) {
         this.mOnCenter = mOnCenter;
     }
@@ -122,20 +131,28 @@ public class ArcProgress extends ProgressBar {
         int target = (int) (roate * count);
         if(mStylePogress == STYLE_ARC){
             float targetmDegree = (360-mDegree)*roate;
-            //绘制完成部分
-            mArcPaint.setColor(mProgressColor);
-            canvas.drawArc(mArcRectf,90+angle,targetmDegree,false,mArcPaint);
-            mArcPaint.setColor(Color.GREEN);
             //绘制未完成部分
             mArcPaint.setColor(mUnmProgressColor);
             canvas.drawArc(mArcRectf,90+angle+targetmDegree,360-mDegree-targetmDegree,false,mArcPaint);
+            //绘制完成部分
+            int[] SWEEP_GRADIENT_COLORS = new int[]{Color.RED,Color.YELLOW, Color.GREEN};
+            SweepGradient mColorShader = new SweepGradient(mRadius, mRadius,SWEEP_GRADIENT_COLORS,null);
+            mArcPaint.setShader(mColorShader);
+//            LinearGradient linearGradient =new LinearGradient(0,0,getWidth(),getHeight(), Color.YELLOW,Color.GREEN, Shader.TileMode.CLAMP);
+//            mArcPaint.setShader(linearGradient);
+//            mArcPaint.setColor(mProgressColor);
+            canvas.drawArc(mArcRectf,90+angle,targetmDegree,false,mArcPaint);
+//            mArcPaint.setShader(null);
+//            mArcPaint.setColor(Color.GREEN);
         }else{
             if(mBgShow)
                 canvas.drawArc(mArcRectf,90+angle,360-mDegree,false,mArcPaint);
             canvas.rotate(180+angle,x,y);
             for(int i = 0 ; i<count;i++){
                 if(i<target){
-                    mLinePaint.setColor(mProgressColor);
+//                    mLinePaint.setColor(mProgressColor);
+                    LinearGradient linearGradient =new LinearGradient(0,0,getWidth()*(1-roate),0, Color.YELLOW,Color.GREEN, Shader.TileMode.CLAMP);
+                    mArcPaint.setShader(linearGradient);
                 }else{
                     mLinePaint.setColor(mUnmProgressColor);
                 }

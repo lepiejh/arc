@@ -1,28 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CB0E31"
+    android:layout_margin="16dp"
+    android:background="#00000000"
     tools:context=".MainActivity">
 
-    <com.czp.library.ArcProgress
-        android:id="@+id/myProgress"
-        android:layout_width="178dp"
-        android:layout_height="178dp"
-        app:degree="180"
-        app:radius="89dp"
-        app:progressStyle="arc"
-        app:progressColor="#ffffff"
-        app:unprogresColor="#88ffffff"
-        app:borderWidth="8dp"
-        app:arcCapRound="true"
-        app:bgShow="true"
-        app:arcbgColor="#00000000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.czp.library.ArcProgress
+            android:id="@+id/myProgress"
+            android:layout_width="178dp"
+            android:layout_height="178dp"
+            app:arcCapRound="true"
+            app:arcbgColor="#00000000"
+            app:bgShow="true"
+            app:borderWidth="18dp"
+            app:degree="90"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:progressColor="#f00"
+            app:progressStyle="arc"
+            app:radius="89dp"
+            app:unprogresColor="#e2e2e2" />
+
+        <com.lx.arcprogress.ChartView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            app:layout_constraintTop_toBottomOf="@+id/myProgress" />
+
+
+        <com.lx.arcprogress.HistogramView
+            android:layout_marginRight="16dp"
+            android:id="@+id/hv_rate"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_marginTop="15.5dp"
+            android:background="#fff" />
+
+        <com.lx.arcprogress.MyBarChartView
+            android:id="@+id/mybarCharView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            app:bar_color="#f9e5c9"
+            android:visibility="gone"
+            app:bottom_line_color="#ededed"
+            app:bottom_text_color="#939393"
+            app:top_text_color="#939393" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
