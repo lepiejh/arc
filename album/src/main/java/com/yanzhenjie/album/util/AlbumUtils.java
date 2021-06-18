@@ -16,6 +16,7 @@
 package com.yanzhenjie.album.util;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -155,12 +156,27 @@ public class AlbumUtils {
     @NonNull
     public static Uri getUri(@NonNull Context context, @NonNull File outPath) {
         Uri uri;
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q){
+            uri = createImageUri(context);
+        }else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             uri = Uri.fromFile(outPath);
         } else {
             uri = CameraFileProvider.getUriForFile(context, CameraFileProvider.getProviderName(context), outPath);
         }
         return uri;
+    }
+
+    /**
+     * 创建图片地址uri,用于保存拍照后的照片 Android 10以后使用这种方法
+     */
+    private static Uri createImageUri(Context context) {
+        String status = Environment.getExternalStorageState();
+        // 判断是否有SD卡,优先使用SD卡存储,当没有SD卡时使用手机存储
+        if (status.equals(Environment.MEDIA_MOUNTED)) {
+            return context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new ContentValues());
+        } else {
+            return context.getContentResolver().insert(MediaStore.Images.Media.INTERNAL_CONTENT_URI, new ContentValues());
+        }
     }
 
     /**
