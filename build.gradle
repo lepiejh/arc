@@ -2,8 +2,15 @@
 apply from: "config.gradle"
 buildscript {
     repositories {
-        google()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
         jcenter()
+        google()
+        maven { url 'https://jitpack.io' }
+        maven { url 'http://nexus.yun-chang.cn/nexus/content/groups/public' }
+        maven {
+            url "https://raw.githubusercontent.com/qqlixiong/mvvm-framework-maven/master"
+        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.0.0"
@@ -15,8 +22,15 @@ buildscript {
 
 allprojects {
     repositories {
-        google()
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        mavenCentral()
         jcenter()
+        google()
+        maven { url 'https://jitpack.io' }
+        maven { url 'http://nexus.yun-chang.cn/nexus/content/groups/public' }
+        maven {
+            url "https://raw.githubusercontent.com/qqlixiong/mvvm-framework-maven/master"
+        }
     }
 }
 
