@@ -44,6 +44,8 @@ import com.yanzhenjie.album.widget.divider.Api21ItemDivider;
 import com.yanzhenjie.album.widget.divider.Divider;
 
 import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -109,7 +111,6 @@ public class AlbumUtils {
      * Take picture.
      *
      * @param activity    activity.
-     * @param requestCode code, see {@link Activity#onActivityResult(int, int, Intent)}.
      * @param outPath     file path.
      */
     public static void takeImage(@NonNull Activity activity, int requestCode, File outPath) {
@@ -125,7 +126,6 @@ public class AlbumUtils {
      * Take video.
      *
      * @param activity    activity.
-     * @param requestCode code, see {@link Activity#onActivityResult(int, int, Intent)}.
      * @param outPath     file path.
      * @param quality     currently value 0 means low quality, suitable for MMS messages, and  value 1 means high quality.
      * @param duration    specify the maximum allowed recording duration in seconds.
@@ -164,6 +164,20 @@ public class AlbumUtils {
             uri = CameraFileProvider.getUriForFile(context, CameraFileProvider.getProviderName(context), outPath);
         }
         return uri;
+    }
+
+    public static File getFile(@NonNull Context context, @NonNull String outPath) {
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q){
+            Uri uri = createImageUri(context);
+            try {
+                return new File(new URI(uri.toString()));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+                return new File(outPath);
+            }
+        }else {
+            return new File(outPath);
+        }
     }
 
     /**
