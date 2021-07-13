@@ -156,7 +156,7 @@ public class AlbumUtils {
     @NonNull
     public static Uri getUri(@NonNull Context context, @NonNull File outPath) {
         Uri uri;
-        if (Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.Q){
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q){
             uri = createImageUri(context);
         }else if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
             uri = Uri.fromFile(outPath);
