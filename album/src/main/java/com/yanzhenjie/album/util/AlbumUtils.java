@@ -44,8 +44,6 @@ import com.yanzhenjie.album.widget.divider.Api21ItemDivider;
 import com.yanzhenjie.album.widget.divider.Divider;
 
 import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.security.MessageDigest;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -164,20 +162,6 @@ public class AlbumUtils {
             uri = CameraFileProvider.getUriForFile(context, CameraFileProvider.getProviderName(context), outPath);
         }
         return uri;
-    }
-
-    public static File getFile(@NonNull Context context, @NonNull File outPath) {
-        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q){
-            Uri uri = getUri(context,outPath);
-            try {
-                return new File(new URI(uri.toString()));
-            } catch (URISyntaxException e) {
-                e.printStackTrace();
-                return outPath;
-            }
-        }else {
-            return outPath;
-        }
     }
 
     /**
