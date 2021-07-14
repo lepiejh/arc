@@ -166,6 +166,20 @@ public class AlbumUtils {
         return uri;
     }
 
+    public static File getFile(@NonNull Context context, @NonNull File outPath) {
+        if (Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.Q){
+            Uri uri = getUri(context,outPath);
+            try {
+                return new File(new URI(uri.toString()));
+            } catch (URISyntaxException e) {
+                e.printStackTrace();
+                return outPath;
+            }
+        }else {
+            return outPath;
+        }
+    }
+
     /**
      * 创建图片地址uri,用于保存拍照后的照片 Android 10以后使用这种方法
      */
