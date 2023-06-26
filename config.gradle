@@ -7,7 +7,7 @@ ext {
     ]
 
     android = [
-            applicationId    : "com.yanzhenjie.album.sample",
+            applicationId    : "com.brick.shield.sample",
             compileSdkVersion: 30,
             buildToolsVersion: "30.0.3",
 

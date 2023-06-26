@@ -22,7 +22,7 @@
     android:paddingRight="@dimen/album_dp_35"
     android:paddingTop="@dimen/album_dp_20">
 
-    <com.yanzhenjie.album.widget.ColorProgressBar
+    <com.brick.shield.widget.ColorProgressBar
         android:id="@+id/progress_bar"
         style="@style/Album.Progress.Loading" />
 

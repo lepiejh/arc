@@ -50,7 +50,7 @@
         android:gravity="center"
         android:visibility="gone">
 
-        <com.yanzhenjie.album.widget.ColorProgressBar
+        <com.brick.shield.widget.ColorProgressBar
             android:id="@+id/progress_bar"
             style="@style/Album.Progress.Loading" />
 
