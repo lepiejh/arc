@@ -48,11 +48,9 @@ import java.lang.annotation.RetentionPolicy;
  */
 public final class Album {
 
-    // All.
     public static final String KEY_INPUT_WIDGET = "KEY_INPUT_WIDGET";
     public static final String KEY_INPUT_CHECKED_LIST = "KEY_INPUT_CHECKED_LIST";
 
-    // Album.
     public static final String KEY_INPUT_FUNCTION = "KEY_INPUT_FUNCTION";
     public static final int FUNCTION_CHOICE_IMAGE = 0;
     public static final int FUNCTION_CHOICE_VIDEO = 1;
