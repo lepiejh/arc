@@ -47,7 +47,7 @@ import java.lang.annotation.RetentionPolicy;
  * Created by Yan Zhenjie on 2016/10/23.
  */
 public final class Album {
-
+    public static final String KEY_INPUT_WIDGET_2 = "KEY_INPUT_WIDGET_2";
     public static final String KEY_INPUT_WIDGET = "KEY_INPUT_WIDGET";
     public static final String KEY_INPUT_CHECKED_LIST = "KEY_INPUT_CHECKED_LIST";
 
