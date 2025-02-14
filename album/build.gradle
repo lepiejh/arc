@@ -12,6 +12,11 @@ android {
     }
 
     resourcePrefix 'album'
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -20,6 +25,7 @@ dependencies {
     implementation rootProject.ext.dependencies.recyclerView
     implementation rootProject.ext.dependencies.cardView
     api rootProject.ext.dependencies.mediaScanner
+    compileOnly 'com.github.lepiejh:android-framework:v2.2.40'
 }
 
 //apply from: 'https://raw.githubusercontent.com/yanzhenjie/bintray/master/maven.gradle'
