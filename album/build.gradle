@@ -1,14 +1,13 @@
-apply plugin: rootProject.ext.plugins.library
+apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 group='com.github.lixiong'
 
 android {
-    compileSdkVersion rootProject.ext.android.compileSdkVersion
-    buildToolsVersion rootProject.ext.android.buildToolsVersion
-
+    compileSdkVersion 30
     defaultConfig {
-        minSdkVersion rootProject.ext.android.minSdkVersion
-        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        minSdkVersion 19
+        targetSdkVersion 30
+
     }
 
     resourcePrefix 'album'
@@ -20,11 +19,6 @@ android {
 }
 
 dependencies {
-    implementation rootProject.ext.dependencies.appCompat
-    implementation rootProject.ext.dependencies.design
-    implementation rootProject.ext.dependencies.recyclerView
-    implementation rootProject.ext.dependencies.cardView
-    api rootProject.ext.dependencies.mediaScanner
     compileOnly 'com.github.lepiejh:android-framework:v2.2.40'
 }
 
