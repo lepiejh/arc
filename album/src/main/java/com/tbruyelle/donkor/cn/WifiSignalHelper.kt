@@ -1,4 +1,4 @@
-package com.tbruyelle.donkor.cn.utils
+package com.tbruyelle.donkor.cn
 
 import android.content.BroadcastReceiver
 import android.content.Context

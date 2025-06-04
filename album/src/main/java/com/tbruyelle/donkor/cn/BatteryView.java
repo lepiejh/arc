@@ -1,4 +1,4 @@
-package com.tbruyelle.donkor.cn.view;
+package com.tbruyelle.donkor.cn;
 
 import android.content.Context;
 import android.content.res.TypedArray;
