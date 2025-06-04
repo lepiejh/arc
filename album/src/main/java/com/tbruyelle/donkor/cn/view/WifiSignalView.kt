@@ -13,11 +13,9 @@ class WifiSignalView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-
-    // 可配置属性
     private var signalColor = Color.BLUE
     private var inactiveColor = Color.LTGRAY
-    private var barCount = 4  // 标准WiFi信号条数
+    private var barCount = 4
     private var barWidth = 10f
     private var barSpacing = 4f
     private var barCornerRadius = 2f
