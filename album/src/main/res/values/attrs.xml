@@ -8,13 +8,4 @@
         <attr name="batteryColor" format="color"/>
         <attr name="batteryPower" format="integer"/>
     </declare-styleable>
-
-    <declare-styleable name="WifiSignalView">
-        <attr name="signalColor" format="color" />
-        <attr name="inactiveColor" format="color" />
-        <attr name="barCount" format="integer" />
-        <attr name="barWidth" format="dimension" />
-        <attr name="barSpacing" format="dimension" />
-        <attr name="barCornerRadius" format="dimension" />
-    </declare-styleable>
 </resources>
