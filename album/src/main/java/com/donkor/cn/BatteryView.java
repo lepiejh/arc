@@ -121,13 +121,13 @@ public class BatteryView extends View {
         RectF rect2 = new RectF(strokeWidth, headHeight + strokeWidth + topOffset, width - strokeWidth, height - strokeWidth);
         paint.setStyle(Paint.Style.FILL);
         //根据电池电量决定电池内矩形电量颜色
-        if (mPower <= 20) {
+        if (mPower <= 40) {
             paint.setColor(Color.RED);
         }
-        if (mPower > 20 && mPower < 50) {
+        if (mPower > 40 && mPower < 70) {
             paint.setColor(Color.BLUE);
         }
-        if (mPower >= 50) {
+        if (mPower >= 70) {
             paint.setColor(Color.GREEN);
         }
         canvas.drawRect(rect2, paint);
