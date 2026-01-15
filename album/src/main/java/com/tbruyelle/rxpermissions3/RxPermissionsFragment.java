@@ -5,8 +5,6 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
-import com.ved.framework.utils.KLog;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,7 +59,7 @@ public class RxPermissionsFragment extends Fragment {
             PublishSubject<Permission> subject = mSubjects.get(permissions[i]);
             if (subject == null) {
                 // No subject found
-                KLog.e(RxPermissions.TAG, "RxPermissions.onRequestPermissionsResult invoked but didn't find the corresponding permission request.");
+//                KLog.e(RxPermissions.TAG, "RxPermissions.onRequestPermissionsResult invoked but didn't find the corresponding permission request.");
                 return;
             }
             mSubjects.remove(permissions[i]);
@@ -103,7 +101,7 @@ public class RxPermissionsFragment extends Fragment {
 
     void log(String message) {
         if (mLogging) {
-            KLog.d(RxPermissions.TAG, message);
+//            KLog.d(RxPermissions.TAG, message);
         }
     }
 
