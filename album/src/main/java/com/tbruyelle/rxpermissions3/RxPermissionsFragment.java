@@ -11,6 +11,9 @@ import java.util.Map;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
+
+import com.ved.framework.utils.KLog;
+
 import io.reactivex.rxjava3.subjects.PublishSubject;
 
 
@@ -59,7 +62,7 @@ public class RxPermissionsFragment extends Fragment {
             PublishSubject<Permission> subject = mSubjects.get(permissions[i]);
             if (subject == null) {
                 // No subject found
-//                KLog.e(RxPermissions.TAG, "RxPermissions.onRequestPermissionsResult invoked but didn't find the corresponding permission request.");
+                KLog.e(RxPermissions.TAG, "RxPermissions.onRequestPermissionsResult invoked but didn't find the corresponding permission request.");
                 return;
             }
             mSubjects.remove(permissions[i]);
@@ -101,7 +104,7 @@ public class RxPermissionsFragment extends Fragment {
 
     void log(String message) {
         if (mLogging) {
-//            KLog.d(RxPermissions.TAG, message);
+            KLog.d(RxPermissions.TAG, message);
         }
     }
 
