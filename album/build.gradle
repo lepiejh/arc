@@ -35,7 +35,7 @@ android {
 }
 
 dependencies {
-    compileOnly 'com.github.lepiejh:android-mvvm:v0.0.264'
+//    compileOnly 'com.github.lepiejh:android-mvvm:v0.0.264'
 //    compileOnly "io.reactivex.rxjava3:rxjava:3.0.6"
 //    compileOnly "io.reactivex.rxjava3:rxandroid:3.0.0"
 //    compileOnly 'androidx.fragment:fragment-ktx:1.4.1'
